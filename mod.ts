@@ -2,14 +2,19 @@ import {
   command,
   CommandClient,
   CommandContext,
-  // config,
   event,
   GatewayIntents,
   joke,
   randomXkcd,
 } from "./deps.ts";
 
-// const data = config();
+let token = Deno.env.get("token");
+
+if (Deno.env.get("env") !== "production") {
+  const { config } = await import("https://deno.land/x/dotenv@v3.1.0/mod.ts");
+  const data = config();
+  token = data.token;
+}
 
 class Pekusara extends CommandClient {
   constructor() {
@@ -20,9 +25,8 @@ class Pekusara extends CommandClient {
   }
 
   @event()
-  ready(): void {
-    console.log(`Logged in as ${this.user?.tag}!`);
-    console.log(Deno.version);
+  ready() {
+    console.log(`Logged in as ${this.user?.tag}! ${Deno.version}`);
   }
 
   @command({ aliases: "pong" })
@@ -69,7 +73,7 @@ ${comic.img}`;
   }
 }
 
-new Pekusara().connect(Deno.env.get("token"), [
+new Pekusara().connect(token, [
   GatewayIntents.DIRECT_MESSAGES,
   GatewayIntents.GUILDS,
   GatewayIntents.GUILD_MESSAGES,
