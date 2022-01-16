@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "harmony": "https://deno.land/x/harmony@v2.5.0/mod.ts",
+    "xkcd": "https://deno.land/x/xkcd@0.1.0/mod.ts",
+    "joke": "https://deno.land/x/joke@v1.0.0/mod.ts",
+    "/": "./"
+  }
+}

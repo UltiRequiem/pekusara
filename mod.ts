@@ -1,3 +1,4 @@
+// Move to import map when is supported on deno deploy
 import {
   command,
   CommandClient,
@@ -19,14 +20,16 @@ if (Deno.env.get("env") !== "production") {
 class Pekusara extends CommandClient {
   constructor() {
     super({
-      prefix: ["pk ", "diah "],
+      prefix: ["pk "],
       caseSensitive: false,
     });
   }
 
   @event()
   ready() {
-    console.log(`Logged in as ${this.user?.tag}! ${Deno.version}`);
+    console.log(
+      `Logged in as ${this.user?.tag}! ${JSON.stringify(Deno.version)}`,
+    );
   }
 
   @command({ aliases: "pong" })
@@ -58,18 +61,6 @@ ${comic.img}`;
   joke(ctx: CommandContext) {
     const data = joke();
     ctx.message.reply(`${data.setup} ${data.punchline}`);
-  }
-
-  @command()
-  async dadjoke(ctx: CommandContext) {
-    const response = await fetch("https://icanhazdadjoke.com", {
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
-    });
-    const data = response.json();
-    ctx.message.reply(JSON.stringify(data));
   }
 }
 
