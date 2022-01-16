@@ -69,7 +69,7 @@ ${comic.img}`;
   }
 }
 
-new Pekusara().connect(data.token, [
+new Pekusara().connect(Deno.env.get("token"), [
   GatewayIntents.DIRECT_MESSAGES,
   GatewayIntents.GUILDS,
   GatewayIntents.GUILD_MESSAGES,
