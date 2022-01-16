@@ -2,14 +2,14 @@ import {
   command,
   CommandClient,
   CommandContext,
-  config,
+  // config,
   event,
   GatewayIntents,
   joke,
   randomXkcd,
 } from "./deps.ts";
 
-const data = config();
+// const data = config();
 
 class Pekusara extends CommandClient {
   constructor() {
@@ -22,6 +22,7 @@ class Pekusara extends CommandClient {
   @event()
   ready(): void {
     console.log(`Logged in as ${this.user?.tag}!`);
+    console.log(Deno.version);
   }
 
   @command({ aliases: "pong" })
