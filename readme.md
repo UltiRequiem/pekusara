@@ -1,6 +1,6 @@
 # Pekusara
 
-An utilities bot using [Deno](http://deno.land) with
+An example utilities bot using [Deno](http://deno.land) with
 [harmony](https://github.com/harmonyland/harmony) as framework.
 
 Invite the production bot to your server.
@@ -11,10 +11,16 @@ Invite the production bot to your server.
 
 Add the bot token to the `.env` file.
 
-Run on development
+- Development
 
 ```sh
 deno run --allow-net --allow-read --allow-env --watch mod.ts
+```
+
+- Production
+
+```sh
+deno run --allow-net --allow-read --allow-env mod.ts
 ```
 
 ## Request a feature
