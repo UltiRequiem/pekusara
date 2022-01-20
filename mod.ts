@@ -1,4 +1,5 @@
 import { GatewayIntents } from "./deps.ts";
+import { serve } from "https://deno.land/std@0.114.0/http/server.ts";
 import Pekusara from "./bot.ts";
 
 let token = Deno.env.get("token");
@@ -14,3 +15,9 @@ new Pekusara().connect(token, [
   GatewayIntents.GUILDS,
   GatewayIntents.GUILD_MESSAGES,
 ]);
+
+serve((_req) => {
+  return new Response("Pekusara is working correctly!", {
+    headers: { "content-type": "text/plain" },
+  });
+});
