@@ -1,11 +1,11 @@
 import { GatewayIntents } from "./deps.ts";
-import { serve } from "https://deno.land/std@0.123.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.126.0/http/server.ts";
 import Pekusara from "./bot.ts";
 
 let token = Deno.env.get("token");
 
 if (Deno.env.get("env") !== "production") {
-  const { config } = await import("https://deno.land/x/dotenv@v3.1.0/mod.ts");
+  const { config } = await import("https://deno.land/x/dotenv@v3.2.0/mod.ts");
   const data = config();
   token = data.token;
 }
