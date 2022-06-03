@@ -1,5 +1,5 @@
 import { GatewayIntents } from "./deps.ts";
-import { serve } from "https://deno.land/std@0.141.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.142.0/http/server.ts";
 import Pekusara from "./bot.ts";
 
 let token = Deno.env.get("token");
